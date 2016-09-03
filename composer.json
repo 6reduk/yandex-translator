@@ -1,0 +1,14 @@
+{
+    "name": "6reduk/yandex-translator",
+    "description": "Client for Yandex.Translate API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitriy Shestakov",
+            "email": "6reduk@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
