@@ -3,7 +3,7 @@
 namespace Pupo4ek\YandexTranslator;
 
 
-class Tanslation
+class Translation
 {
     /**
      * @var string|array

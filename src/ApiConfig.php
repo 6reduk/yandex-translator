@@ -8,10 +8,16 @@ class ApiConfig
     const RESPONSE_DATA_FORMAT_HTML = 'html';
 
     private $key;
-    private $params = [
-        'options' => 0,
-        'format' => static::RESPONSE_DATA_FORMAT_PLAIN,
-    ];
+    private $params;
+
+
+    public function __construct()
+    {
+        $this->params = [
+            'options' => 0,
+            'format' => static::RESPONSE_DATA_FORMAT_PLAIN,
+        ];
+    }
 
     public function getKey()
     {

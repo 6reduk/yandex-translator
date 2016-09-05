@@ -70,7 +70,7 @@ class Translator
     public function translate($text, $language=null)
     {
         $params = [
-            'text' = $text
+            'text' => $text
         ];
 
         if ($language) {
@@ -95,7 +95,7 @@ class Translator
     private function getRequestParams()
     {
         $params = $this->getHttpClientParams();
-        $params = array_merge($params, $this->getApiParams());
+        $params = array_merge($params, ['query' => $this->getApiParams()]);
 
         return $params;
     }
@@ -117,11 +117,12 @@ class Translator
 
     private function checkApiResponseCode($data)
     {
-        if (isset(data['code']) && data['code'] > 200) {
+        //TODO add handlers for all api response codes
+        if (isset($data['code']) && $data['code'] > 200) {
             throw new ApiException(sprintf(
                 'Api error code: %s, message: %s',
-                data['message'],
-                data['code']
+                $data['message'],
+                $data['code']
                 ));
         }
     }
@@ -135,10 +136,13 @@ class Translator
      */
     protected function execute($uri, array $params)
     {
+        $requestParams = $this->getRequestparams();
+        $requestParams['query'] = array_merge($requestParams['query'], $params);
+
         $this->rawResponse = $this->httpClient->request(
             'POST',
             $uri,
-            array_merge($this->getRequestParams(), $params)
+            $requestParams
         );
 
         if ($this->rawResponse->getStatusCode() !== 200 ) {
