@@ -95,7 +95,7 @@ class Translator
     private function getRequestParams()
     {
         $params = $this->getHttpClientParams();
-        $params = array_merge($params, ['query' => $this->getApiParams()]);
+        $params = array_merge($params, ['form_params' => $this->getApiParams()]);
 
         return $params;
     }
@@ -136,8 +136,8 @@ class Translator
      */
     protected function execute($uri, array $params)
     {
-        $requestParams = $this->getRequestparams();
-        $requestParams['query'] = array_merge($requestParams['query'], $params);
+        $requestParams = $this->getRequestParams();
+        $requestParams['form_params'] = array_merge($requestParams['form_params'], $params);
 
         $this->rawResponse = $this->httpClient->request(
             'POST',
