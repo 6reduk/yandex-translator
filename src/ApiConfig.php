@@ -2,6 +2,9 @@
 
 namespace Pupo4ek\YandexTranslator;
 
+use Pupo4ek\YandexTranslator\Exceptions\PropertyNotSettingExcecption;
+
+
 class ApiConfig
 {
     const RESPONSE_DATA_FORMAT_PLAIN = 'plain';
