@@ -7,6 +7,6 @@ use Exception;
 /**
  * Base class for all translator exception.
  */
-class BaseTranslatorException extends Exception;
+class BaseTranslatorException extends Exception
 {
 }
